@@ -40,7 +40,7 @@ const experiences = [
     id: 2,
     title: "MERN Stack Development Intern",
     company: "CreArt Solutions Pvt. Ltd.",
-    location: "CG Road, Ahmedabad",
+    location: "CG Road, Ahmedabad ( Remote )",
     duration: "July 2, 2025 - July 16, 2025", 
     type: "Internship",
     description: "Completed a 15-day intensive summer internship specializing in MERN Stack development. Worked directly under Project Manager supervision, gaining practical experience in full-stack web development and professional software development practices.",

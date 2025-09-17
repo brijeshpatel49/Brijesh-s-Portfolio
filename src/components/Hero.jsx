@@ -253,38 +253,46 @@ const Hero = () => {
             variants={itemVariants}
             className="flex flex-wrap gap-4 justify-center lg:justify-start mb-8"
           >
+            {/* View My Work Button */}
             <motion.button
+              onClick={() => {
+                document.getElementById("projects").scrollIntoView({
+                  behavior: "smooth",
+                });
+              }}
               className="px-8 py-4 
-                bg-gradient-to-r from-blue-700 to-blue-600 
-                dark:from-cyan-700 dark:to-blue-600 
-                text-white rounded-full font-bold shadow-lg 
-                hover:shadow-blue-700/25 transition-all duration-300 
-                flex items-center gap-2"
+      bg-gradient-to-r from-blue-700 to-blue-600 
+      dark:from-cyan-700 dark:to-blue-600 
+      text-white rounded-full font-bold shadow-lg 
+      hover:shadow-blue-700/25 transition-all duration-300 
+      flex items-center gap-2"
               whileHover={{ scale: 1.02, y: 0 }}
               whileTap={{ scale: 0.95 }}
             >
               <FaRocket className="w-4 h-4" />
-              <a href="#projects">View My Work</a>
+              View My Work
             </motion.button>
 
+            {/* View Resume Button */}
             <motion.button
+              onClick={() => {
+                window.open(
+                  "https://drive.google.com/file/d/156ARq3h4oa1XoxU6ELH8vlcRb8Vhui3E/view?usp=drive_link",
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              }}
               className="px-8 py-4 border-2 
-    border-blue-500 dark:border-cyan-700 
-    text-blue-700 dark:text-cyan-600 
-    rounded-full font-bold 
-    hover:bg-blue-800/10 dark:hover:bg-cyan-600/20 
-    transition-all duration-300 flex items-center gap-2"
+      border-blue-500 dark:border-cyan-700 
+      text-blue-700 dark:text-cyan-600 
+      rounded-full font-bold 
+      hover:bg-blue-800/10 dark:hover:bg-cyan-600/20 
+      transition-all duration-300 flex items-center gap-2"
               whileHover={{ scale: 1.02, y: 0 }}
               whileTap={{ scale: 0.95 }}
             >
-              <FaFileAlt  className="w-4 h-4" />
-              <a
-                href="https://drive.google.com/file/d/156ARq3h4oa1XoxU6ELH8vlcRb8Vhui3E/view?usp=drive_link"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Resume
-              </a>
+              <FaFileAlt className="w-4 h-4" />
+              View Resume
             </motion.button>
           </motion.div>
 
@@ -297,34 +305,44 @@ const Hero = () => {
                 Icon: FaGithub,
                 href: "https://github.com/brijeshpatel49",
                 label: "GitHub",
+                isExternal: true,
               },
               {
                 Icon: FaLinkedin,
                 href: "https://www.linkedin.com/in/brijesh-patel-b1195b288/",
                 label: "LinkedIn",
+                isExternal: true,
               },
               {
                 Icon: FaEnvelope,
                 href: "mailto:brijeshp3349@gmail.com",
                 label: "Email",
+                isExternal: false,
               },
-            ].map(({ Icon, href, label }) => (
-              <motion.a
+            ].map(({ Icon, href, label, isExternal }) => (
+              <motion.button
                 key={label}
-                href={href}
-                target="_blank"
+                onClick={() => {
+                  if (label === "Email") {
+                    // Open email popup, not new tab
+                    window.location.href = href;
+                  } else {
+                    // Open external links in new tab
+                    window.open(href, "_blank", "noopener,noreferrer");
+                  }
+                }}
                 className="w-12 h-12 
-                  bg-white/90 dark:bg-white/10 
-                  border border-blue-600/40 dark:border-cyan-700/30 
-                  rounded-full flex items-center justify-center 
-                  text-blue-700 dark:text-cyan-600 
-                  hover:text-white hover:bg-blue-700 dark:hover:bg-cyan-600/30 
-                  transition-all duration-300"
+        bg-white/90 dark:bg-white/10 
+        border border-blue-600/40 dark:border-cyan-700/30 
+        rounded-full flex items-center justify-center 
+        text-blue-700 dark:text-cyan-600 
+        hover:text-white hover:bg-blue-700 dark:hover:bg-cyan-600/30 
+        transition-all duration-300 cursor-pointer"
                 whileHover={{ scale: 1.1, y: -3 }}
                 whileTap={{ scale: 0.9 }}
               >
                 <Icon className="w-5 h-5" />
-              </motion.a>
+              </motion.button>
             ))}
           </motion.div>
         </motion.div>
@@ -442,7 +460,7 @@ const Hero = () => {
                   :
                   <span className="text-emerald-600 dark:text-green-400">
                     {" "}
-                    "MERN Stack Enthusiast"
+                    "MERN Stack Developer"
                   </span>
                   ,
                 </div>

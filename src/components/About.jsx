@@ -170,7 +170,7 @@ const About = () => {
         >
           {[
             {
-              number: "5+",
+              number: "6+",
               label: "Projects Built",
               color: "text-purple-600 dark:text-purple-400",
             },
@@ -180,7 +180,7 @@ const About = () => {
               color: "text-blue-600 dark:text-blue-400",
             },
             {
-              number: "14+",
+              number: "18+",
               label: "Technologies",
               color: "text-indigo-600 dark:text-indigo-400",
             },
@@ -240,7 +240,7 @@ const About = () => {
             <motion.div
               className="hidden md:block absolute w-4 h-4 bg-blue-600 dark:bg-cyan-400 rounded-full shadow-2xl border-2 border-white dark:border-slate-800"
               style={{
-                top: "30px", // 32px (line position) - 2px (half of 4px dot height) = 30px
+                top: "26px", // 32px (line position) - 2px (half of 4px dot height) = 30px
               }}
               initial={{ left: "-8px" }} // -8px (half of 16px dot width)
               whileInView={{ left: "calc(100% - 8px)" }} // End position minus half dot width

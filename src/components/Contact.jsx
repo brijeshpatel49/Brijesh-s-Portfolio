@@ -106,9 +106,9 @@ const Contact = () => {
       subtitle: "+91 97278 19653",
       description:
         "Quick messages and instant communication for urgent discussions",
-      status: "Available 10 AM - 8 PM IST",
-      statusColor: "text-blue-600 dark:text-blue-400",
-      statusDot: "bg-blue-400",
+      status: "Available daily 9 AM - 9 PM IST",
+      statusColor: "text-green-600 dark:text-green-400",
+      statusDot: "bg-green-400",
       href: "https://wa.me/919727819653?text=Hi%20Brijesh,%20I'd%20like%20to%20discuss%20a%20project%20opportunity%20with%20you.",
       copyButton: true,
       copyText: "+91 97278 19653",
@@ -245,13 +245,13 @@ const Contact = () => {
             />
             <span className="text-slate-700 dark:text-slate-300 font-semibold">
               <span className="font-bold text-green-600 dark:text-green-400">
-                Open for Opportunities
+                Open to Opportunities
               </span>
             </span>
           </motion.div>
         </motion.div>
 
-        {/* Contact Cards Grid - FIXED NESTED ANCHOR TAGS */}
+        {/* Contact Cards Grid - COMPLETELY FIXED */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -279,7 +279,20 @@ const Contact = () => {
                   y: -5,
                   transition: { duration: 0.2 },
                 }}
-                className="group relative bg-white/95 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/50 hover:border-blue-300/60 dark:hover:border-slate-600/70 transition-all duration-500 shadow-lg hover:shadow-xl"
+                className="group relative bg-white/95 dark:bg-slate-800/90 backdrop-blur-xl rounded-2xl p-6 border border-slate-200/80 dark:border-slate-700/50 hover:border-blue-300/60 dark:hover:border-slate-600/70 transition-all duration-500 shadow-lg hover:shadow-xl cursor-pointer"
+                onClick={() => {
+                  if (card.title === "Email") {
+                    window.location.href =
+                      "mailto:brijeshp3349@gmail.com?subject=Let's Work Together&body=Hi Brijesh, I'd love to discuss a project opportunity with you.";
+                  } else if (card.title === "WhatsApp") {
+                    window.open(
+                      "https://wa.me/919727819653?text=Hi Brijesh, I'd like to discuss a project opportunity with you.",
+                      "_blank"
+                    );
+                  } else {
+                    window.open(card.href, "_blank", "noopener,noreferrer");
+                  }
+                }}
               >
                 {/* Action Button - Fixed Z-index */}
                 <div className="absolute top-4 right-4 z-30">
@@ -310,64 +323,53 @@ const Contact = () => {
                   )}
                 </div>
 
-                {/* Main Content - REMOVED NESTED ANCHOR TAGS */}
-                <button
-                  onClick={() => {
-                    if (card.copyButton) {
-                      window.open(card.href, "_blank");
-                    } else {
-                      window.open(card.href, "_blank", "noopener,noreferrer");
-                    }
-                  }}
-                  className="w-full text-left"
-                >
-                  <div className="flex items-start gap-5">
-                    {/* Icon - Made smaller */}
-                    <motion.div
-                      className={`w-16 h-16 bg-gradient-to-br ${card.iconBg} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg border border-white/20 dark:border-white/10`}
-                      whileHover={{
-                        scale: 1.1,
-                        rotate: 5,
-                        transition: { duration: 0.3 },
-                      }}
-                    >
-                      <IconComponent className="w-7 h-7 text-white" />
-                    </motion.div>
+                {/* Main Content */}
+                <div className="flex items-start gap-5">
+                  {/* Icon - Made smaller */}
+                  <motion.div
+                    className={`w-16 h-16 bg-gradient-to-br ${card.iconBg} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg border border-white/20 dark:border-white/10`}
+                    whileHover={{
+                      scale: 1.1,
+                      rotate: 5,
+                      transition: { duration: 0.3 },
+                    }}
+                  >
+                    <IconComponent className="w-7 h-7 text-white" />
+                  </motion.div>
 
-                    {/* Content */}
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300">
-                        {card.title}
-                      </h3>
+                  {/* Content */}
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-800 dark:text-white mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-300 transition-colors duration-300">
+                      {card.title}
+                    </h3>
 
-                      <p className="text-slate-700 dark:text-slate-300 font-semibold mb-3">
-                        {card.subtitle}
-                      </p>
+                    <p className="text-slate-700 dark:text-slate-300 font-semibold mb-3">
+                      {card.subtitle}
+                    </p>
 
-                      <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
-                        {card.description}
-                      </p>
+                    <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed mb-4">
+                      {card.description}
+                    </p>
 
-                      {/* Status */}
-                      <div className="flex items-center gap-2">
-                        <motion.div
-                          className={`w-1.5 h-1.5 ${card.statusDot} rounded-full`}
-                          animate={{ scale: [1, 1.3, 1] }}
-                          transition={{
-                            duration: 2,
-                            repeat: Infinity,
-                            delay: index * 0.5,
-                          }}
-                        />
-                        <span
-                          className={`text-xs font-semibold ${card.statusColor}`}
-                        >
-                          {card.status}
-                        </span>
-                      </div>
+                    {/* Status */}
+                    <div className="flex items-center gap-2">
+                      <motion.div
+                        className={`w-1.5 h-1.5 ${card.statusDot} rounded-full`}
+                        animate={{ scale: [1, 1.3, 1] }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          delay: index * 0.5,
+                        }}
+                      />
+                      <span
+                        className={`text-xs font-semibold ${card.statusColor}`}
+                      >
+                        {card.status}
+                      </span>
                     </div>
                   </div>
-                </button>
+                </div>
 
                 {/* Hover Effect */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-purple-600/5 dark:from-blue-600/5 dark:to-purple-600/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0" />
@@ -423,10 +425,8 @@ const Contact = () => {
             >
               <motion.button
                 onClick={() =>
-                  window.open(
-                    "mailto:brijeshp3349@gmail.com?subject=Let's%20Work%20Together&body=Hi%20Brijesh,%0A%0AI'd%20love%20to%20discuss%20a%20project%20opportunity%20with%20you.%0A%0A",
-                    "_blank"
-                  )
+                  (window.location.href =
+                    "mailto:brijeshp3349@gmail.com?subject=Let's%20Work%20Together&body=Hi%20Brijesh,%0A%0AI'd%20love%20to%20discuss%20a%20project%20opportunity%20with%20you.%0A%0A")
                 }
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 dark:from-cyan-600 dark:to-blue-600 text-white rounded-xl font-bold shadow-xl hover:shadow-blue-500/25 transition-all duration-500 overflow-hidden"
                 whileHover={{ scale: 1.05, y: -3 }}
@@ -444,7 +444,7 @@ const Contact = () => {
               </motion.button>
 
               <motion.a
-                href="https://drive.google.com/file/d/1J-6oztoi3rfSTOyVTbaJygKO9WFu3gZQ/view"
+                href="https://drive.google.com/file/d/156ARq3h4oa1XoxU6ELH8vlcRb8Vhui3E/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 dark:from-purple-500 dark:to-indigo-500 text-white rounded-xl font-bold shadow-xl hover:shadow-purple-500/25 transition-all duration-500 overflow-hidden"

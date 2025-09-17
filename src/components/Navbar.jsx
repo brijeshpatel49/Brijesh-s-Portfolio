@@ -409,26 +409,6 @@ const Navbar = () => {
         />
       </motion.nav>
 
-      {/* Hire Me Button - Placed at Bottom Right */}
-      <motion.div
-        className="fixed bottom-8 right-8 z-50"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 2, duration: 0.6 }}
-      >
-        <motion.button
-          onClick={handleHireMe}
-          className="md:hidden px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 dark:from-cyan-600 dark:to-blue-600 dark:hover:from-cyan-700 dark:hover:to-blue-700 text-white font-bold rounded-full shadow-xl hover:shadow-2xl transition-all duration-300 group"
-          whileHover={{ scale: 1.1, y: -2 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <div className="flex items-center gap-2">
-            <FaRocket className="w-4 h-4 group-hover:rotate-12 transition-transform duration-300" />
-            <span>Hire Me</span>
-          </div>
-        </motion.button>
-      </motion.div>
-
       {/* Dropdown Overlay */}
       {isDropdownOpen && (
         <motion.div
