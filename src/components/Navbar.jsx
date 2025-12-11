@@ -17,10 +17,10 @@ import {
 import { NavLink } from "react-router-dom";
 
 const navItems = [
-  { id: "about", label: "About", icon: FaUser },
   { id: "skills", label: "Skills", icon: FaBolt },
   { id: "projects", label: "Projects", icon: FaCode },
   { id: "experience", label: "Experience", icon: FaBriefcase },
+  { id: "about", label: "About", icon: FaUser },
   { id: "contact", label: "Contact", icon: FaEnvelope },
 ];
 

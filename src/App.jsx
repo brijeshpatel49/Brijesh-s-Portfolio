@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -9,16 +8,17 @@ import Education from "./components/Education";
 import Projects from "./components/Projects";
 import Experience from "./components/Experience";
 import NotFound from "./components/NotFound";
+import Chatbot from "./components/Chatbot";
 
 const HomePage = () => {
   return (
     <main>
       <Hero />
-      <About />
-      <Education />
       <Skills />
       <Projects />
       <Experience />
+      <About />
+      <Education />
       <Contact />
     </main>
   );
@@ -32,6 +32,7 @@ const App = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Chatbot />
     </div>
   );
 };
